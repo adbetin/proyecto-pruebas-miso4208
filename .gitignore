@@ -1,0 +1,3 @@
+*.pyc
+Proyecto/venv/
+Proyecto/.idea/workspace.xml
