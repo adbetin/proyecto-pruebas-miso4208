@@ -14,7 +14,7 @@ class ApplicationType(models.Model):
 
 class Application(models.Model):
     name = models.CharField(max_length=255)  # el nombre de la aut
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     url = models.URLField(max_length=500, blank=True)  # url de recurso aut bajo pruebas
     repositoryUrl = models.URLField(max_length=500, blank=True)  # url del repositorio
     apphash = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4)
@@ -36,7 +36,7 @@ class TestResult(Enum):
 
 class TestType(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -44,9 +44,9 @@ class TestType(models.Model):
 
 class Library(models.Model):
     name = models.CharField(max_length=255)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     testType = models.ForeignKey(TestType, on_delete=models.PROTECT, related_name="libraries")
-    command = models.TextField()
+    command = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
 
@@ -56,7 +56,7 @@ class Library(models.Model):
 
 class ApplicationTest(models.Model):
     name = models.CharField(max_length=255)  # el nombre de la prueba
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     value = models.TextField()
     testType = models.ForeignKey(TestType, on_delete=models.PROTECT, related_name="appTests")
     library = models.ForeignKey(Library, on_delete=models.PROTECT, related_name="libraries")
@@ -85,7 +85,7 @@ class TestExecution(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     started_at = models.DateTimeField(default=None, blank=True, null=True)
     finished_at = models.DateTimeField(default=None, blank=True, null=True)
-    reportText = models.TextField()
+    reportText = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return "%s: %s - %s" % (self.applicationTest.application.name, self.applicationTest.name, str(self.created_at))
