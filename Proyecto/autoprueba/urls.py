@@ -15,8 +15,14 @@ Including another URLconf
 """
 
 from django.urls import path
-from autoprueba import views
+from autoprueba import views as view
+from tester import views as view_tester
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', view.index, name='index'),
+    path('android/', view.android, name='android'),
+    path('calabash/', view.calabash, name='calabash'),
+    path('cucumber/', view.cucumber, name='cucumber'),
+    path('tester_android/', view_tester.android, name='android')
 ]
+

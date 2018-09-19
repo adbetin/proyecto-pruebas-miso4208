@@ -428,16 +428,16 @@
 
 
             <!-- Main navigation -->
-            <div class="card card-sidebar-mobile">
-                <ul class="nav nav-sidebar" data-nav-type="accordion">
+            <div class="card card-sidebar-mobile ">
+                <ul class="nav nav-sidebar nav-item-open" data-nav-type="accordion">
                     <!-- Forms -->
                     <li class="nav-item-header">
                         <div class="text-uppercase font-size-xs line-height-xs">Pruebas</div>
                         <i class="icon-menu" title="Pruebas"></i>
                     </li>
-                    <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-                        <a href="#" class="nav-link"><i class="icon-spell-check"></i> <span>E2E</span></a>
-                        <ul class="nav nav-group-sub" data-submenu-title="Text editors">
+                    <li class="nav-item nav-item-submenu ">
+                        <a href="#" class="nav-link"><i class="icon-square"></i> <span>E2E</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Seleccione el tipo de prueba">
                             <li class="nav-item"><a
                                     href="calabash/"
                                     class="nav-link">Cypress</a></li>
@@ -446,9 +446,9 @@
                                     class="nav-link">Webdriver.io</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
-                        <a href="#" class="nav-link"><i class="icon-spell-check"></i> <span>Headless</span></a>
-                        <ul class="nav nav-group-sub" data-submenu-title="Text editors">
+                    <li class="nav-item nav-item-submenu  ">
+                        <a href="#" class="nav-link"><i class="icon-circle"></i> <span>Headless</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Seleccione el tipo de prueba">
                             <li class="nav-item"><a
                                     href="calabash/"
                                     class="nav-link">Cypress</a></li>
@@ -457,8 +457,8 @@
                                     class="nav-link">Webdriver.io</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="icon-select2"></i> <span>Random</span></a>
+                    <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+                        <a href="#" class="nav-link"><i class="icon-triangle"></i> <span>Random</span></a>
                         <ul class="nav nav-group-sub" data-submenu-title="Pickers">
                             <li class="nav-item"><a
                                     href="calabash"
@@ -466,10 +466,13 @@
                             <li class="nav-item"><a
                                     href="calabash/"
                                     class="nav-link">Gremlins.js</a></li>
+                            <li class="nav-item"><a
+                                    href="android/"
+                                    class="nav-link">Móvil</a></li>
                         </ul>
                     </li>
                     <li class="nav-item nav-item-submenu">
-                        <a href="#" class="nav-link"><i class="icon-select2"></i> <span>BDD / BDT</span></a>
+                        <a href="#" class="nav-link"><i class="icon-box"></i> <span>BDD / BDT</span></a>
                         <ul class="nav nav-group-sub" data-submenu-title="Pickers">
                             <li class="nav-item"><a
                                     href="/calabash"
@@ -560,98 +563,7 @@
         <div class="content">
             {% block content %}{% endblock %}
 
-            <!-- Ace code editor -->
-            <div class="card">
-                <div class="card-header header-elements-inline">
-                    <h5 class="card-title"> Escenario #1 -  Nombre escenario  </h5>
-                    <div class="header-elements">
-                        <div class="list-icons">
-                            <a class="list-icons-item" data-action="collapse"></a>
-                            <a class="list-icons-item" data-action="reload"></a>
-                            <a class="list-icons-item" data-action="remove"></a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="card-body">
-                    <div class="row mt-4">
-                        <div class="col-4">
-                            <label> Step #1 : </label>
-                            <select >
-                                <option> I fill with /user/ and /password/ </option>
-                                <option> I open the login screen </option>
-                                <option> I expect to see /msg/ </option>
-                            </select>
-
-                        </div>
-                        <div class="col-4">
-                            <label> Campo especifico #1 : </label>
-                            <input />
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-4">
-                            <label> Step #1 : </label>
-                            <select >
-                                <option> I fill with /user/ and /password/ </option>
-                                <option> I open the login screen </option>
-                                <option> I expect to see /msg/ </option>
-                            </select>
-
-                        </div>
-                        <div class="col-4">
-                            <label> Campo especifico #1 : </label>
-                            <input />
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-4">
-                            <label> Step #1 : </label>
-                            <select >
-                                <option> I fill with /user/ and /password/ </option>
-                                <option> I open the login screen </option>
-                                <option> I expect to see /msg/ </option>
-                            </select>
-
-                        </div>
-                        <div class="col-4">
-                            <label> Campo especifico #1 : </label>
-                            <input />
-                        </div>
-                    </div>
-                </div>
-
-                <hr>
-                <div class="row">
-
-                    <div class="col-6 ml-sm-5">
-                        <table class="table table-border-dashed">
-                            <tr>
-                                <th>user</th>
-                                <th>password</th>
-                                <th>msg</th>
-                            </tr>
-                            <tr>
-                                <th>admin</th>
-                                <th>123456</th>
-                                <th>Acceso concedido!</th>
-                            </tr>
-                            <tr>
-                                <th> - </th>
-                                <th> vacio </th>
-                                <th>Error autenticado </th>
-                            </tr>
-                        </table>
-                    </div>
-
-                </div>
-                <hr>
-
-                <div class="row ml-5 mb-5">
-                    <a href="#" class="btn bg-blue"><i class="icon-backspace mr-2"></i> Atrás</a>
-                    <a href="#" class="btn bg-teal-400"><i class="icon-statistics mr-2"></i> Ejecutar</a>
-                </div>
-            </div>
             <!-- ace code editor -->
 
         </div>
@@ -705,6 +617,8 @@
 
 <script src='{% static "/template_assets/js/app.js" %}'></script>
 <script src='{% static "/template_assets/js/demo_pages/editor_code.js" %}'></script>
+
+<script src='{% static "/js/random.js" %}'></script>
 <!-- /theme JS files -->
 
 {% block scripts %}{% endblock %}

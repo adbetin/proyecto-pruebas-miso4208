@@ -15,10 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from . import views as autoprueba
+from . import views as vistas
 
 urlpatterns = [
     path('', include('autoprueba.urls')),
     path('admin/', admin.site.urls),
-    path('calabash/', autoprueba.index )
+    path('random/', vistas.random_index)
 ]

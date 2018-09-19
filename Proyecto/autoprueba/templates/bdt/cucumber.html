@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %} Random Testing {% endblock %}
+
+
+{% block content %}
+
+ <!-- Ace code editor -->
+            <div class="card">
+                <div class="card-header header-elements-inline">
+                    <h5 class="card-title"> Escenario #1 -  Nombre escenario  </h5>
+                    <div class="header-elements">
+                        <div class="list-icons">
+                            <a class="list-icons-item" data-action="collapse"></a>
+                            <a class="list-icons-item" data-action="reload"></a>
+                            <a class="list-icons-item" data-action="remove"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-4">
+                            <label> Step #1 : </label>
+                            <select >
+                                <option> I fill with /user/ and /password/ </option>
+                                <option> I open the login screen </option>
+                                <option> I expect to see /msg/ </option>
+                            </select>
+
+                        </div>
+                        <div class="col-4">
+                            <label> Campo especifico #1 : </label>
+                            <input />
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-4">
+                            <label> Step #1 : </label>
+                            <select >
+                                <option> I fill with /user/ and /password/ </option>
+                                <option> I open the login screen </option>
+                                <option> I expect to see /msg/ </option>
+                            </select>
+
+                        </div>
+                        <div class="col-4">
+                            <label> Campo especifico #1 : </label>
+                            <input />
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-4">
+                            <label> Step #1 : </label>
+                            <select >
+                                <option> I fill with /user/ and /password/ </option>
+                                <option> I open the login screen </option>
+                                <option> I expect to see /msg/ </option>
+                            </select>
+
+                        </div>
+                        <div class="col-4">
+                            <label> Campo especifico #1 : </label>
+                            <input />
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+
+                    <div class="col-6 ml-sm-5">
+                        <table class="table table-border-dashed">
+                            <tr>
+                                <th>user</th>
+                                <th>password</th>
+                                <th>msg</th>
+                            </tr>
+                            <tr>
+                                <th>admin</th>
+                                <th>123456</th>
+                                <th>Acceso concedido!</th>
+                            </tr>
+                            <tr>
+                                <th> - </th>
+                                <th> vacio </th>
+                                <th>Error autenticado </th>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+                <hr>
+
+                <div class="row ml-5 mb-5">
+                    <a href="#" class="btn bg-blue"><i class="icon-backspace mr-2"></i> Atrás</a>
+                    <a href="#" class="btn bg-teal-400"><i class="icon-statistics mr-2"></i> Ejecutar</a>
+                </div>
+            </div>
+
+{% endblock %}
