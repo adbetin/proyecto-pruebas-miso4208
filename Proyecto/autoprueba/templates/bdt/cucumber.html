@@ -1,101 +1,105 @@
 {% extends 'base.html' %}
 
-{% block title %} Random Testing {% endblock %}
+{% block title %} Behavior Driven Testing {% endblock %}
 
 
 {% block content %}
-
- <!-- Ace code editor -->
-            <div class="card">
-                <div class="card-header header-elements-inline">
-                    <h5 class="card-title"> Escenario #1 -  Nombre escenario  </h5>
-                    <div class="header-elements">
-                        <div class="list-icons">
-                            <a class="list-icons-item" data-action="collapse"></a>
-                            <a class="list-icons-item" data-action="reload"></a>
-                            <a class="list-icons-item" data-action="remove"></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-body">
-                    <div class="row mt-4">
-                        <div class="col-4">
-                            <label> Step #1 : </label>
-                            <select >
-                                <option> I fill with /user/ and /password/ </option>
-                                <option> I open the login screen </option>
-                                <option> I expect to see /msg/ </option>
-                            </select>
-
-                        </div>
-                        <div class="col-4">
-                            <label> Campo especifico #1 : </label>
-                            <input />
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-4">
-                            <label> Step #1 : </label>
-                            <select >
-                                <option> I fill with /user/ and /password/ </option>
-                                <option> I open the login screen </option>
-                                <option> I expect to see /msg/ </option>
-                            </select>
-
-                        </div>
-                        <div class="col-4">
-                            <label> Campo especifico #1 : </label>
-                            <input />
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col-4">
-                            <label> Step #1 : </label>
-                            <select >
-                                <option> I fill with /user/ and /password/ </option>
-                                <option> I open the login screen </option>
-                                <option> I expect to see /msg/ </option>
-                            </select>
-
-                        </div>
-                        <div class="col-4">
-                            <label> Campo especifico #1 : </label>
-                            <input />
-                        </div>
-                    </div>
-                </div>
-
-                <hr>
-                <div class="row">
-
-                    <div class="col-6 ml-sm-5">
-                        <table class="table table-border-dashed">
-                            <tr>
-                                <th>user</th>
-                                <th>password</th>
-                                <th>msg</th>
-                            </tr>
-                            <tr>
-                                <th>admin</th>
-                                <th>123456</th>
-                                <th>Acceso concedido!</th>
-                            </tr>
-                            <tr>
-                                <th> - </th>
-                                <th> vacio </th>
-                                <th>Error autenticado </th>
-                            </tr>
-                        </table>
-                    </div>
-
-                </div>
-                <hr>
-
-                <div class="row ml-5 mb-5">
-                    <a href="#" class="btn bg-blue"><i class="icon-backspace mr-2"></i> Atrás</a>
-                    <a href="#" class="btn bg-teal-400"><i class="icon-statistics mr-2"></i> Ejecutar</a>
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> Feature </h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
                 </div>
             </div>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="featureName">Nombre feature</label>
+                    <input type="text" class="form-control" id="featureName" name="featureName"
+                           placeholder="Ingresa el nombre del Feature">
+
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="featureName">Historia de usuario</label>
+                    <input type="text" class="form-control" id="userStory" placeholder="Historia de usuario" name="userStory">
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="scenario">Nombre del Escenario</label>
+                    <input type="text" class="form-control" id="scenarioName" placeholder="Nombre del escenario" name="scenName">
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="scenario">Pagina a probar</label>
+                    <input type="text" class="form-control" id="website" placeholder="Pagina a probar" name="website">
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="Pasos">Pasos</label>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Tipo</th>
+                            <th>Buscador</th>
+                            <th>Valor</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-control" id="event" name="evento[]">
+                                    <option>click</option>
+                                    <option>wait</option>
+                                    <option>press</option>
+                                    <option>fill input</option>
+                                </select>
+                            </td>
+                            <td>
+                                  <select class="form-control" id="type" name="type[]">
+                                    <option>button</option>
+                                    <option>input</option>
+                                    <option>link text</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="finder" placeholder="Buscador" name="finder[]">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control" id="value" placeholder="Valor" name="value[]">
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <input type="button" class="add-row btn btn-Info "  value="Add Row">
+                </div>
+                <div class="form-group">
+                    <label for="scenario">Condición salida</label>
+                    <select class="form-control" id="type" name="outputCond">
+                                    <option>input</option>
+                                    <option>link text</option>
+
+                                </select>
+
+                </div>
+                 <div class="form-group">
+                    <label for="scenario">Valor esperado</label>
+                    <input type="text" class="form-control" id="exval" placeholder="Valor esperado" name="exval">
+                    </small>
+                </div>
+                <button type="submit" class="btn btn-primary">Ejecutar</button>
+            </form>
+        </div>
+
+    </div>
+
+
 
 {% endblock %}
