@@ -20,6 +20,9 @@ from tester import views as view_tester
 
 urlpatterns = [
     path('', view.index, name='index'),
+    path('headless/cypress', view.headless_cypress, name='headless_cypress'),
+    path('headless/cypress_process', view.headless_cypress_process, name='headless_cypress_process'),
+    path('headless/webdriver', view.headless_webdriver, name='headless_webdriver'),
     path('android/', view.android, name='android'),
     path('calabash/', view.calabash, name='calabash'),
     path('cucumber/', view.cucumber, name='cucumber'),
