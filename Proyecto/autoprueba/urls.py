@@ -23,6 +23,6 @@ urlpatterns = [
     path('android/', view.android, name='android'),
     path('calabash/', view.calabash, name='calabash'),
     path('cucumber/', view.cucumber, name='cucumber'),
-    path('tester_android/', view_tester.android, name='android')
+    path('tester_android/<numEvent>/<packageHerramienta>/', view_tester.android, name='android')
 ]
 
