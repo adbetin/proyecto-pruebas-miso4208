@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} VRT Testing {% endblock %}
+
+
+{% block content %}
+
+     <!-- Ace code editor -->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> Visual Regresion Testing </h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="card-body">
+
+            <div class="col-12 mt-3 align-right">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th> Fecha de reporte</th>
+                        <th> Imagen base </th>
+                        <th> Imagen reporte</th>
+                        <th> Diferencias </th>
+                        <th> Generar </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> 2018-10-12 </td>
+                            <td> <img with="100" height="100" src="../../static/data/vrt/cypress/buscarMateria.js/materia_profesor.png"> </td>
+                            <td> <img with="100" height="100"  src="../../static/data/vrt/cypress/buscarMateria.js/materia_profesor(1).png">  </td>
+                            <td> <img with="100" height="100"  src="../../static/data/vrt/resemble/diff_materia.png" > </td>
+                            <td> <button class="btn btn-default disabled"> Comparar </button> </td>
+                        </tr>
+                        <tr>
+                            <td><span id="fechavrt"> - </span></td>
+                            <td><img with="100" height="100" src="../../static/data/vrt/cypress/dolibar/listaTerceros.png"> </td>
+                            <td><img id="img_vrt" with="100" height="100"  src="">  - </td>
+                            <td><img id="resultado_img" with="100" height="100"  src="" > - </td>
+                            <td><button id="btn_compare" class="btn btn-success "> Comparar </button> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        <hr>
+        <div class="row ml-5 mb-5">
+            <a href="#" class="btn bg-blue"><i class="icon-backspace mr-2"></i> Atrás</a>
+        </div>
+    </div>
+
+{% endblock %}
+
