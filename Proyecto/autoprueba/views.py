@@ -85,6 +85,39 @@ def cucumber(request):
     else:
         return render(request, 'bdt/cucumber.html', {})
 
+def sqlGenerator(request):
+    if (request.method == "POST"):
+        print(request)
+        print(request.POST.getlist('evento[]'))
+        print(request.POST.getlist('type[]'))
+        print(request.POST.getlist('finder[]'))
+
+        url = 'http://192.168.64.2/generatedata-3.2.7/api/v1/data'
+        data = '''{
+    "numRows":'''+request.POST.get('numFilas')+''',
+    "rows": [
+       '''+getRows(request)+'''
+    ],
+    "export": {
+        "type": "SQL",
+        "settings": {
+        	"tableName":"'''+request.POST.get('tableName')+'''",
+        	"databaseType":"'''+request.POST.get('motor')+'''",
+            "stripWhitespace": false,
+            "dataStructureFormat": "simple"
+        }
+    }
+}'''
+
+
+        response = requests.post(url, data=data)
+
+        return HttpResponse(response.content, content_type='text/plain')
+    else:
+        return render(request, 'sqlGenerator/sqlGenerator.html', {})
+
+
+
 def getScenarios(req):
     data='''
     {
@@ -111,3 +144,37 @@ def getSteps(req):
         if x!=((len(req.POST.getlist('evento[]'))-1)):
             data1=data1+","
     return data1
+
+def getRows(req):
+    data1 = ""
+    for x in range(0, len(req.POST.getlist('nombreColumna[]'))):
+        print(x)
+        if(req.POST.getlist('column[]')[x]=='Alfanumérico'):
+                data1=data1+''' {
+                 "type": "AlphaNumeric",
+                "title": "'''+req.POST.getlist('nombreColumna[]')[x]+'''",
+                 "settings": {
+                "placeholder": "LLLxxLLLxLL"
+                 }
+                 }'''
+        elif(req.POST.getlist('column[]')[x]=='Autoincremento'):
+                data1 = data1 + '''{
+                    "type": "AutoIncrement",
+                    "title": "'''+req.POST.getlist('nombreColumna[]')[x]+'''",
+                     "settings": {
+                     "incrementStart": 1,
+                     "incrementValue": 1
+                    }}'''
+        elif(req.POST.getlist('column[]')[x]=='Booleano'):
+                data1 = data1 +'''{
+                 "type": "Boolean",
+                 "title": "'''+req.POST.getlist('nombreColumna[]')[x]+'''",
+                 "settings": {  "placeholder": "False|True"  } 
+                }'''
+
+        if x != ((len(req.POST.getlist('column[]')) - 1)):
+                data1 = data1 + ","
+    return data1
+
+
+
