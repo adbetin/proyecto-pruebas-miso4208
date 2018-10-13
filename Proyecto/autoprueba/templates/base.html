@@ -158,7 +158,7 @@
                                     class="nav-link">Webdriver.io</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open">
+                    <li class="nav-item nav-item-submenu ">
                         <a href="#" class="nav-link"><i class="icon-triangle"></i> <span>Random</span></a>
                         <ul class="nav nav-group-sub" data-submenu-title="Pickers">
                             <li class="nav-item"><a
@@ -182,6 +182,19 @@
                                     href="/calabash"
                                     class="nav-link">Calabash</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item nav-item-submenu nav-item-expanded nav-item-open ">
+                        <a href="#" class="nav-link"><i class="icon-image-compare"></i> <span>VRT</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Pickers">
+                            <li class="nav-item"><a
+                                    href="/vrt/cypress"
+                                    class="nav-link">Cypress</a></li>
+                            <li class="nav-item"><a
+                                    href="/vrt/resemble"
+                                    class="nav-link">ResembleJS</a></li>
+                        </ul>
+
+
                     </li>
                     <!-- /forms -->
                 </ul>
@@ -259,6 +272,8 @@
 
 <script src='{% static "/js/random.js" %}'></script>
 <script src='{% static "/js/table.js" %}'></script>
+<script src='{% static "/js/vrt.js" %}'></script>
+
 <!-- /theme JS files -->
 
 {% block scripts %}{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %} VRT Testing {% endblock %}
+
+
+{% block content %}
+
+     <!-- Ace code editor -->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> Visual Regresion Testing </h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="card-body" id="contenido">
+            <div class="row ">
+                <div class="col-12">
+                    <label> URL Aplicación : </label>
+                    <input class="form-control" id="urlApp"/>
+                </div>
+
+
+            </div>
+
+            <div class="col-12 mt-3 align-right">
+
+                    <button id="agregarFila" class=" align-right col-3 btn btn-success form-control"><i class="icon icon-add"></i> Agregar </button>
+                </div>
+
+            <div class="row mt-4 " id="fila">
+                <div class="col-4">
+                    <label> Pasos a realizar : </label>
+                    <select class="form-control" id="app">
+                        <option value="click"> Click </option>
+                        <option value="contains"> Contains </option>
+                        <option value="contains"> Find </option>
+                        <option value="contains"> Type </option>
+                    </select>
+                </div>
+                <div class="col-4">
+                    <label> Nombre elemento : </label>
+                    <input class="form-control" id="urlApp"/>
+                </div>
+                <div class="col-4">
+                    <label> Valor : </label>
+                    <input class="form-control" id="urlApp"/>
+                </div>
+
+            </div>
+    </div>
+
+    <hr>
+    <div class="row ml-5 mb-5">
+        <a href="#" class="btn bg-blue"><i class="icon-backspace mr-2"></i> Atrás</a>
+        <button class="btn bg-teal-400" id="ejecutarVrtCypress"><i class="icon-statistics mr-2"></i> Ejecutar</button>
+
+    </div>
+
+{% endblock %}
+

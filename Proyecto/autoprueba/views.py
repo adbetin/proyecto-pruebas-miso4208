@@ -111,3 +111,10 @@ def getSteps(req):
         if x!=((len(req.POST.getlist('evento[]'))-1)):
             data1=data1+","
     return data1
+
+
+def vrtcypress(request):
+    return render(request, 'vrt/cypress.html', {})
+
+def vrtresemble(request):
+    return render(request, 'vrt/resemble.html', {})
