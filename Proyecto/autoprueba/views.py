@@ -2,8 +2,9 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import os
 import uuid
+import threading
 
-from tester.functions import create_file, delete_file, cypress_tester
+from tester.functions import create_file, mdroid_tester, cypress_tester
 from rest_framework.utils import json
 
 
@@ -16,7 +17,6 @@ def index(request):
 def headless_cypress(request):
     return render(request, 'headless/cypress.html', {})
 
-
 def headless_cypress_process(request):
     if request.method == 'POST':
         # get code
@@ -28,7 +28,7 @@ def headless_cypress_process(request):
         # crea el archivo
         # filename = create_file(workspacefolder, test_filename, code_content)
 
-        cypress_tester("node_modules\\.bin\\cypress run", "D:\\uniandes Miso\\Pruebas Automaticas\\proyecto-pruebas-miso4208\\Proyecto\\workspace\\headless\\test_hash000000")
+        cypress_tester()
 
         # se elimina el archivo
         # delete_file(filename)
@@ -41,6 +41,25 @@ def headless_cypress_process(request):
             json.dumps({"success": False, "response": "Metodo no permitido", 'errors': ["Metodo no permitido"]}),
             content_type="application/json", status=500)
 
+def mutation_mdroid(request):
+    return render(request, 'mutation/mdroid.html', {})
+
+def mutation_mdroid_process(request):
+    if request.method == 'POST':
+        # get code
+        options_generated = request.POST[u'code_content']
+        multithread = request.POST[u'multithread']
+        application = request.POST[u'application']
+
+        mdroid_tester(application, options_generated, multithread, "/home/andresdavid/PruebasAutomaticas/S9")
+
+        return HttpResponse(
+            json.dumps({"success": True, "response": "Ejecutado con exito", 'errors': []}),
+            content_type="application/json", status=200)
+    else:
+        return HttpResponse(
+            json.dumps({"success": False, "response": "Metodo no permitido", 'errors': ["Metodo no permitido"]}),
+            content_type="application/json", status=500)
 
 def headless_webdriver(request):
     return render(request, 'headless/webdriver.html', {})
