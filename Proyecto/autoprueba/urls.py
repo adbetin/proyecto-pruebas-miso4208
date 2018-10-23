@@ -28,6 +28,13 @@ urlpatterns = [
     path('android/', view.android, name='android'),
     path('calabash/', view.calabash, name='calabash'),
     path('cucumber/', view.cucumber, name='cucumber'),
+<<<<<<< HEAD
+    path('SQLGenerator/', view.sqlGenerator, name='sqlGenerator'),
     path('tester_android/<numEvent>/<packageHerramienta>/', view_tester.android, name='android')
+=======
+    path('tester_android/<numEvent>/<packageHerramienta>/', view_tester.android, name='android'),
+    path('vrt/cypress', view.vrtcypress, name='vrtcypress'),
+    path('vrt/resemble', view.vrtresemble, name='vrtresemble'),
+>>>>>>> 689ace020016427e409a693c2597714a09a43477
 ]
 
