@@ -19,22 +19,32 @@ from autoprueba import views as view
 from tester import views as view_tester
 
 urlpatterns = [
+    # pagina de inicio
     path('', view.index, name='index'),
+
+    # headless testing
     path('headless/cypress', view.headless_cypress, name='headless_cypress'),
     path('headless/cypress_process', view.headless_cypress_process, name='headless_cypress_process'),
     path('headless/webdriver', view.headless_webdriver, name='headless_webdriver'),
+
+    # mutation testing
     path('mutation/mdroid', view.mutation_mdroid, name='mutation_mdroid'),
     path('mutation/mdroid_process', view.mutation_mdroid_process, name='mutation_mdroid_process'),
+
+    # random  testing
     path('android/', view.android, name='android'),
     path('calabash/', view.calabash, name='calabash'),
     path('cucumber/', view.cucumber, name='cucumber'),
-<<<<<<< HEAD
+
+    # generacion de datos
     path('SQLGenerator/', view.sqlGenerator, name='sqlGenerator'),
-    path('tester_android/<numEvent>/<packageHerramienta>/', view_tester.android, name='android')
-=======
+
+    # gdd-bdt?
     path('tester_android/<numEvent>/<packageHerramienta>/', view_tester.android, name='android'),
+    path('tester_android/<numEvent>/<packageHerramienta>/', view_tester.android, name='android'),
+
+    # visual regression testing
     path('vrt/cypress', view.vrtcypress, name='vrtcypress'),
     path('vrt/resemble', view.vrtresemble, name='vrtresemble'),
->>>>>>> 689ace020016427e409a693c2597714a09a43477
 ]
 
