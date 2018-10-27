@@ -2,3 +2,6 @@
 Proyecto/venv/
 Proyecto/.idea/workspace.xml
 Proyecto/.idea/
+Proyecto/tools/cypress/node_modules/
+Proyecto/tools/cypress/package-lock\.json
+Proyecto/tools/cypress/cypress
