@@ -1,4 +1,4 @@
 requests
-Django==2.1.1
+Django==2.1.2
 django-registration
 djangorestframework
