@@ -12,7 +12,7 @@ $( document ).ready(function() {
     $("#btn_compare").click( function(){
         $('#img_vrt').attr("src","../../static/data/vrt/cypress/dolibar/listaterceros(1).png")
         $('#resultado_img').attr("src","../../static/data/vrt/resemble/diff_listaterceros.png")
-        $('#fechavrt').html("2018-13-05")
+        $('#fechavrt').html("2018-10-13")
     });
 
 
