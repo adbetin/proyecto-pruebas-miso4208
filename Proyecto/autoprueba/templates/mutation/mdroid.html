@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Mutation Testing - MDROID+{% endblock %}
+{% block pageTitle %}Mutation Testing - MDROID+{% endblock %}
+
+
+{% block content %}
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Ejecucion de MDroid</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <p>
+                            <span class="font-weight-semibold">Seleccione la aplicación a mutar</span><br/>
+                            <label for="application">Application</label>
+                            <select id="application" class="form-control">
+                                <option value="org.gnucash.android">GNU Cash</option>
+                                <option value="org.wikipedia">Wikipedia</option>
+                            </select>
+                            <br/>
+                            <label for="multithread">Multithread</label>
+                            <select id="multithread" class="form-control">
+                                <option value="true">Si</option>
+                                <option value="false">No</option>
+                            </select>
+                            <br/>
+                            <a href="4#" class="btn bg-teal-400" id="execute"><i class="icon-statistics mr-2"></i>
+                                Ejecutar</a>
+                        </p>
+                        <pre id="javascript_editor" style="display: none">
+1	=	ActivityNotDefined
+2	=	DifferentActivityIntentDefinition
+3	=	InvalidActivityName
+4	=	InvalidKeyIntentPutExtra
+5	=	InvalidLabel
+6	=	NullIntent
+7	=	NullValueIntentPutExtra
+8	=	WrongMainActivity
+9	=	MissingPermissionManifest
+10	=	WrongStringResource
+11	=	NotParcelable
+12	=	SDKVersion
+13	=	LengthyBackEndService
+14	=	LongConnectionTimeOut
+15	=	BluetoothAdapterAlwaysEnabled
+16	=	NullBluetoothAdapter
+17	=	InvalidURI
+18	=	NullGPSLocation
+19	=	InvalidDate
+20	=	NullBackEndServiceReturn
+21	=	InvalidMethodCallArgument
+22	=	NullMethodCallArgument
+23	=	ClosingNullCursor
+24	=	InvalidIndexQueryParameter
+25	=	InvalidSQLQuery
+26	=	ViewComponentNotVisible
+27	=	FindViewByIdReturnsNull
+28	=	InvalidColor
+29	=	InvalidViewFocus
+30	=	BuggyGUIListener
+31	=	InvalidIDFindView
+32	=	InvalidFilePath
+33	=	NullInputStream
+34	=	NotSerializable
+35	=	OOMLargeImage
+36	=	LengthyGUIListener
+37	=	NullOutputStream
+38	=	LengthyGUICreation
+                        </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="application/javascript">
+        var csrf_token = "{{ csrf_token }}";
+        var upload_file_url = "{% url 'mutation_mdroid_process' %}";
+    </script>
+    <script src='{% static "/js/mutation_mdroid.js" %}'></script>
+{% endblock %}
