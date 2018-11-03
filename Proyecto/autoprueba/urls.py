@@ -46,5 +46,11 @@ urlpatterns = [
     # visual regression testing
     path('vrt/cypress', view.vrtcypress, name='vrtcypress'),
     path('vrt/resemble', view.vrtresemble, name='vrtresemble'),
+
+    # Plataforma
+    path('config/plataforma', view.configPlataforma, name='configPlataforma'),
+    path('config/listadoConfig', view.configListado, name='configListado'),
+    path('config/appMoviles', view.appMoviles, name='appMoviles'),
+    path('config/appWeb', view.appWeb, name='appWeb'),
 ]
 
