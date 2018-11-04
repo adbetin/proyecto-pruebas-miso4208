@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Headless Testing - Cypress{% endblock %}
+{% block pageTitle %}Headless Testing - Cypress{% endblock %}
+
+
+{% block content %}
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Editor Cypress</h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mb-3">
+
+                        <p>
+                            <label for="application">Navegador</label>
+                            <select id="application" class="form-control">
+                                <option value="chrome">Chrome</option>
+                                <option value="electron59">Electron 59</option>
+                            </select>
+                            <br/>
+                            <span class="font-weight-semibold">Ingrese el c&oacute;digo de su prueba</span>
+                            <br/>
+                            <a href="4#" class="btn bg-teal-400" id="execute"><i class="icon-statistics mr-2"></i> Ejecutar</a>
+                        </p>
+
+                        <pre id="javascript_editor" data-fouc>
+/**
+ *
+ * Prueba cypress ejemplo
+ */
+
+describe('Los estudiantes login', function() {
+    it('Visits los estudiantes and fails at login', function() {
+      cy.visit('https://losestudiantes.co')
+      cy.contains('Cerrar').click()
+      //Lineas nuevas
+      cy.contains('Ingresar').click()
+      cy.get('.cajaLogIn').find('input[name="correo"]').click().type("wrongemail@example.com")
+      cy.get('.cajaLogIn').find('input[name="password"]').click().type("1234")
+      cy.get('.cajaLogIn').contains('Ingresar').click()
+      cy.contains('El correo y la contraseña que ingresaste no figuran en la base de datos. Intenta de nuevo por favor.')
+    })
+})</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="application/javascript">
+        var csrf_token = "{{ csrf_token }}";
+        var upload_file_url = "{% url 'headless_cypress_process' %}";
+    </script>
+    <script src='{% static "/js/headless_cypress.js" %}'></script>
+{% endblock %}

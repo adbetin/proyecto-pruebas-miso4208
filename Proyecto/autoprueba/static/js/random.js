@@ -2,19 +2,23 @@ $( document ).ready(function() {
 
     $("#ejecutar").click( function () {
 
-        alert( $('#app').select() );
+        var numEvent = $('#numEvent').val() == "" ? 100 : $('#numEvent').val();
+        var package = $('#app').select().val() == "" ? 100 : $('#app').select().val() ;
+
         $.ajax({
-          type: "POST",
-          url: "/tester_android/",
-          data: { cantidadEvento : 10 , appp : $('#app').select() },
+          type: "GET",
+          url: "/tester_android/"+numEvent+"/"+package,
+
           dataType: 'html',
           success: function ( data ) {
-              alert( data ,"Ingreso aca");
+              alert( "Prueba realizada");
           },
           error : function ( error ) {
               alert( error );
           }
         });
-    });
+
+           });
+
 
 });
