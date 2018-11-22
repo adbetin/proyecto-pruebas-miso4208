@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %} Behavior Driven Testing {% endblock %}
+
+
+{% block content %}
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> Definición de la estrategia </h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="file">Feature</label>
+                    <input type="file" class="form-control" id="file" name="file"
+                           placeholder="Ingresa el nombre del Feature">
+
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="file2">Definición de pasos</label>
+                    <input type="file" class="form-control" id="file2" placeholder="Historia de usuario" name="file2">
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="featureName">Correo electrónico</label>
+                    <input type="text" class="form-control" id="email" placeholder="email" name="email">
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="featureName">Headless</label>
+                    <input type="checkbox" class="form-control" id="userStory" placeholder="Historia de usuario" name="userStory">
+                    <label for="featureName">Screenshots</label>
+                    <input type="checkbox" class="form-control" id="userStory" placeholder="Historia de usuario" name="userStory">
+                    </small>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="scenario">Número de filas a generar</label>
+                    <input type="number" class="form-control" id="numFilas" placeholder="Número de filas" name="numFilas">
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="Pasos">Generación de datos</label>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Nombre de variable</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-control" id="event" name="type[]">
+                                    <option>Alfanumérico</option>
+                                    <option>Autoincremento</option>
+                                    <option>Booleano</option>
+                                    <option>CVV</option>
+                                    <option>Ciudad</option>
+                                    <option>Compañias</option>
+                                    <option>Paises</option>
+                                    <option>Fecha</option>
+                                    <option>Nombre Masculino</option>
+                                    <option>Nombre Femenino</option>
+                                    <option>Apellido</option>
+                                    <option>Correo</option>
+                                </select>
+                            </td>
+                            <td>
+                             <input type="text" class="form-control" id="nombreColumna" placeholder="Nombre variable" name="nombreVariable[]">
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <input type="button" class="add-reg btn btn-Info "  value="Agregar registro">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Ejecutar</button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
