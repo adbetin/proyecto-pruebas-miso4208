@@ -78,7 +78,7 @@ ALLOWED_HOSTS = ['*']
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASE_USER = os.environ.get("MONGODB_USER", 'admin')
+DATABASE_USER = os.environ.get("MONGODB_USER", 'Cluster0')
 print(DATABASE_USER)
 DATABASE_HOST = os.environ.get("MONGODB_URI", 'mongodb://admin:h6c1ieinkOenQWia@cluster0-shard-00-00-kgigw.mongodb.net:27017,cluster0-shard-00-01-kgigw.mongodb.net:27017,cluster0-shard-00-02-kgigw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true')
 print(DATABASE_HOST)
