@@ -1,9 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import os
 import uuid
 import threading
 
+from testcore.models import TestExecution
 from tester.functions import create_file, mdroid_tester, cypress_tester
 from rest_framework.utils import json
 
@@ -14,9 +15,14 @@ import requests
 def index(request):
     return render(request, 'index.html', {})
 
+def test_execution(request, execution_id):
+    execution = get_object_or_404(TestExecution, executionhash=execution_id)
+    return render(request, 'test_execution.html', {"execution": execution, "executionId": execution_id})
+
 
 def headless_cypress(request):
-    return render(request, 'headless/cypress.html', {})
+    results = TestExecution.objects.all()
+    return render(request, 'headless/cypress.html', {"executions": results})
 
 
 def headless_cypress_process(request):
@@ -46,7 +52,8 @@ def headless_cypress_process(request):
 
 
 def mutation_mdroid(request):
-    return render(request, 'mutation/mdroid.html', {})
+    results = TestExecution.objects.all()
+    return render(request, 'mutation/mdroid.html', {"executions": results})
 
 
 def mutation_mdroid_process(request):

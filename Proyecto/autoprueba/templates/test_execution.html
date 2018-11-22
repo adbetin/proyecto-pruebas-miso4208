@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resultados ejecucion {{ execution }}{% endblock %}
+{% block pageTitle %}Resultados ejecucion {{ execution }}{% endblock %}
+
+
+{% block content %}
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <div id="terminal-container">
+                            <textarea id="terminal-area" rows="17" readonly class="form-control">
+                                {{ execution }} {{ execution.reportText }}
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="application/javascript">
+        var executionId = "{{ executionId }}";
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+    <script src='{% static "/js/terminal.js" %}'></script>
+{% endblock %}

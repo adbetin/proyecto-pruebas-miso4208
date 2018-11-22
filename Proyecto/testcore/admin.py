@@ -8,4 +8,14 @@ admin.site.register(Application)
 admin.site.register(TestType)
 admin.site.register(Library)
 admin.site.register(ApplicationTest)
-admin.site.register(TestExecution)
+#admin.site.register(TestExecution)
+
+class TestExecutionAdmin(admin.ModelAdmin):
+    list_display = ('applicationTest', 'status')
+    list_filter = ('applicationTest', 'status')
+    save_as = True
+    save_on_top = True
+    change_list_template = 'change_list_graph.html'
+
+
+admin.site.register(TestExecution, TestExecutionAdmin)

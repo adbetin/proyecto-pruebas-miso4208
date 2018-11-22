@@ -14,13 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
+from django.urls import path, re_path
 from autoprueba import views as view
 from tester import views as view_tester
 
 urlpatterns = [
     # pagina de inicio
     path('', view.index, name='index'),
+
+    re_path('execution/(?P<execution_id>[0-9a-f-]+)', view.test_execution, name='test_exe'),
 
     # headless testing
     path('headless/cypress', view.headless_cypress, name='headless_cypress'),

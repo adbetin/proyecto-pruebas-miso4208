@@ -37,10 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'testcore',
     'autoprueba',
     'tester',
-    'reporter'
+    'reporter',
 ]
 
 MIDDLEWARE = [
@@ -77,10 +78,20 @@ ALLOWED_HOSTS = ['*']
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+DATABASE_USER = os.environ.get("MONGODB_USER", 'admin')
+print(DATABASE_USER)
+DATABASE_HOST = os.environ.get("MONGODB_URI", 'mongodb://admin:h6c1ieinkOenQWia@cluster0-shard-00-00-kgigw.mongodb.net:27017,cluster0-shard-00-01-kgigw.mongodb.net:27017,cluster0-shard-00-02-kgigw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true')
+print(DATABASE_HOST)
 DATABASES = {
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #}
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME': DATABASE_USER,
+        'HOST': DATABASE_HOST
     }
 }
 
@@ -128,3 +139,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'autoprueba/static'),
 )
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "proyectoprueba.routing.channel_routing",
+    },
+}

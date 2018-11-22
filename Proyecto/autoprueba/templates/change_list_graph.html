@@ -1,0 +1,68 @@
+{% extends "admin/change_list.html" %}
+{% load staticfiles %}
+{% block extrahead %}
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <script>
+        var randomColorGenerator = function () {
+            return '#' + (Math.random().toString(16) + '0000000').slice(2, 8);
+        };
+        var options = {
+            responsive: true,
+            maintainAspectRatio: true,
+            legend: {
+                position: 'left'
+            },
+            title: {
+                display: true
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        };
+        window.onload = function () {
+            var ctx = document.getElementById("status-chart");
+            {% regroup cl.queryset|dictsort:"status" by get_status_display as status_list %}
+            var lineChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [{% for status in status_list %}'{{ status.grouper }}',{% endfor %}],
+                    datasets: [{
+                        data: [{% for status in status_list %}'{{ status.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for status in status_list %}randomColorGenerator(),{% endfor %}]
+                    }]
+                },
+                options: options
+            });
+
+            ctx = document.getElementById("applicationTest-chart");
+            {% regroup cl.queryset|dictsort:"applicationTest" by get_applicationTest_display as applicationTest_list %}
+            var lineChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [{% for applicationTest in applicationTest_list %}'{{ applicationTest.grouper }}',{% endfor %}],
+                    datasets: [{
+                        data: [{% for applicationTest in applicationTest_list %}'{{ applicationTest.list|length }}',{% endfor %}],
+                        backgroundColor: [{% for applicationTest in applicationTest_list %}randomColorGenerator(),{% endfor %}]
+                    }]
+                },
+                options: options
+            });
+        }
+    </script>
+{% endblock %}
+{% block content %}
+    <h1> Graphs </h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <canvas id="status-chart" style="width: 100px !important;"></canvas>
+        </div>
+        <div class="col-sm-4">
+            <canvas id="applicationTest-chart" style="width: 100px !important;"></canvas>
+        </div>
+    </div>
+    {{ block.super }}
+{% endblock %}

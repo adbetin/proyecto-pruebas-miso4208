@@ -12,6 +12,7 @@ $(function () {
           success: function ( data ) {
               console.log("Ejecutado correctamente", data);
               alert( data ,"Ejecutado correctamente");
+              location.reload();
           },
           error : function ( error ) {
               alert( 'Error al ejecutar el script' );

@@ -79,6 +79,16 @@
 37	=	NullOutputStream
 38	=	LengthyGUICreation
                         </pre>
+
+                        <br/>
+                        <br/>
+                        <h2>Ejecuciones</h2>
+                        <div>
+                            {% for exec in executions %}
+                                <a href="{% url 'test_exe' exec.executionhash %}" target="_blank">{{ exec }}</a>
+                                <br/>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>

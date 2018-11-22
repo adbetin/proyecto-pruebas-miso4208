@@ -26,8 +26,8 @@
                         <p>
                             <label for="application">Navegador</label>
                             <select id="application" class="form-control">
-                                <option value="chrome">Chrome</option>
                                 <option value="electron59">Electron 59</option>
+                                <option value="chrome">Chrome</option>
                             </select>
                             <br/>
                             <span class="font-weight-semibold">Ingrese el c&oacute;digo de su prueba</span>
@@ -53,6 +53,16 @@ describe('Los estudiantes login', function() {
       cy.contains('El correo y la contraseña que ingresaste no figuran en la base de datos. Intenta de nuevo por favor.')
     })
 })</pre>
+
+                        <br/>
+                        <br/>
+                        <h2>Ejecuciones</h2>
+                        <div>
+                            {% for exec in executions %}
+                                <a href="{% url 'test_exe' exec.executionhash %}" target="_blank">{{ exec }}</a>
+                                <br/>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -86,6 +86,13 @@ class TestExecution(models.Model):
     started_at = models.DateTimeField(default=None, blank=True, null=True)
     finished_at = models.DateTimeField(default=None, blank=True, null=True)
     reportText = models.TextField(blank=True, null=True)
+    executionhash = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4)
 
     def __str__(self):
         return "%s: %s - %s" % (self.applicationTest.application.name, self.applicationTest.name, str(self.created_at))
+
+class TestParameter(models.Model):
+    test = models.ForeignKey(TestExecution, db_index=True, on_delete=models.CASCADE, related_name="parameters")
+    key = models.CharField(max_length=240, db_index=True)
+    value = models.CharField(max_length=240, db_index=True)
+    type = models.CharField(max_length=240, db_index=True)
