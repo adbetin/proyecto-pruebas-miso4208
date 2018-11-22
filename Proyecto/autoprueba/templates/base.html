@@ -435,6 +435,25 @@
                         <a href="{% url 'index' %}" class="nav-link"><i class="icon-home2"></i> <span>Inicio</span></a>
                     </li>
 
+                    <li class="nav-item nav-item-submenu  ">
+                        <a href="#" class="nav-link"><i class="icon-circle"></i> <span>Plataforma</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Seleccione el tipo de prueba">
+                            <li class="nav-item"><a
+                                    href="/config/plataforma"
+                                    class="nav-link">Estrategia</a></li>
+                            <li class="nav-item"><a
+                                    href="/config/listadoConfig"
+                                    class="nav-link">Listado de estrategías</a></li>
+                            <li class="nav-item">
+                                <a
+                                    href="/config/appWeb"
+                                    class="nav-link">Aplicaciones web</a></li>
+                            <li class="nav-item"><a
+                                    href="/config/appMoviles"
+                                    class="nav-link">Aplicaciones móviles</a></li>
+                        </ul>
+                    </li>
+
                     <li class="nav-item nav-item-submenu {% if actual_url == "headless_cypress" %}
                     nav-item-submenu nav-item-expanded nav-item-open{% endif %}">
                         <a href="#"
@@ -446,17 +465,7 @@
                                     class="nav-link">Cypress</a></li>
                         </ul>
                     </li>
-                    <!--li class="nav-item nav-item-submenu  ">
-                        <a href="#" class="nav-link"><i class="icon-circle"></i> <span>Headless</span></a>
-                        <ul class="nav nav-group-sub" data-submenu-title="Seleccione el tipo de prueba">
-                            <li class="nav-item"><a
-                                    href="calabash/"
-                                    class="nav-link">Cypress</a></li>
-                            <li class="nav-item"><a
-                                    href="calabash"
-                                    class="nav-link">Webdriver.io</a></li>
-                        </ul>
-                    </li-->
+
                     <li class="nav-item nav-item-submenu ">
                         <a href="#" class="nav-link"><i class="icon-shuffle"></i> <span>Random</span></a>
                         <ul class="nav nav-group-sub" data-submenu-title="Pickers">
@@ -577,9 +586,19 @@
 <script src='{% static "/template_assets/js/app.js" %}'></script>
 <script src='{% static "/template_assets/js/demo_pages/editor_code.js" %}'></script>
 
+<script src='{% static "/template_assets/js/plugins/forms/wizards/steps.min.js" %}'></script>
+
+<script src='{% static "/template_assets/js/plugins/forms/wizards/select2.min.js" %}'></script>
+<script src='{% static "/template_assets/js/plugins/forms/wizards/validate.min.js" %}'></script>
+<script src='{% static "/template_assets/js/plugins/forms/wizards/uniform.min.js" %}'></script>
+<script src='{% static "/template_assets/js/plugins/forms/wizards/form_wizard.js" %}'></script>
+<script src='{% static "/template_assets/js/plugins/forms/wizards/components_modals.js" %}'></script>
+
+
 <script src='{% static "/js/random.js" %}'></script>
 <script src='{% static "/js/table.js" %}'></script>
 <script src='{% static "/js/vrt.js" %}'></script>
+<script src='{% static "/js/config.js" %}'></script>
 
 <!-- /theme JS files -->
 

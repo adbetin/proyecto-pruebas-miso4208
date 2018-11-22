@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block title %} VRT Testing {% endblock %}
+
+
+{% block content %}
+
+     <!-- Ace code editor -->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> Listado de apps </h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="card-body" id="contenido">
+           <div class="row">
+                                <div class="col-md-12 ">
+									<div class="form-group ">
+
+                                        <table class="table table-bordered col-md-12" id="tablaAppWeb">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>File Apk</th>
+                                                    <th>Versión</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="filaWeb">
+
+                                                    <td> K9 - MAIL </td>
+                                                    <td> <a href="/static/data/android/k9-5.600.apk"> k9-5.600.apk</a></td>
+                                                    <td> 5.6 </td>
+                                                    <td>
+                                                        <button class="btn btn-primary btnEliminarAppWeb" >
+                                                            <i class="icon-pencil"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <tr class="filaWeb">
+
+                                                    <td> Wikipedia </td>
+                                                    <td> <a href="/static/data/android/Wikipedia.apk"> Wikipedia.apk</a></td>
+                                                    <td> 2.7 </td>
+                                                    <td>
+                                                        <button class="btn btn-primary btnEliminarAppWeb" >
+                                                            <i class="icon-pencil"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+									</div>
+								</div>
+    </div>
+
+    <hr>
+     <!-- Primary modal -->
+        <div id="modal_theme_primary" class="modal fade" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-primary">
+                        <h6 class="modal-title">Nueva aplicación </h6>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="d-block">Nombre :</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="d-block">Versión :</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="d-block">Descripción :</label>
+                                <textarea type="text" class="form-control" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="d-block">Archivo (Apk) :</label>
+                                <input name="recommendations" type="file" class="form-input-styled" data-fouc>
+                                <span class="form-text text-muted">Formatos: apk, Tamaño máximo 20Mb</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-link bg-grey" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn bg-primary">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+				<!-- /primary modal -->
+    <div class="row ml-5 mb-5">
+        <a onclick="window.history.back()" href="#" class="btn bg-blue"><i class="icon-backspace mr-2"></i> Atrás</a>
+        &nbsp;
+        <button class="btn bg-teal-400" id="agregarAppWeb" data-toggle="modal" data-target="#modal_theme_primary"><i class="icon-add mr-2"></i> Nueva</button
+    </div>
+
+
+
+{% endblock %}

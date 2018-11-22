@@ -1,0 +1,393 @@
+{% extends 'base.html' %}
+
+{% block title %} Configuración {% endblock %}
+
+
+{% block content %}
+
+     <!-- Basic setup -->
+	            <div class="card">
+					<div class="card-header bg-white header-elements-inline">
+						<h6 class="card-title">Configuración</h6>
+						<div class="header-elements">
+							<div class="list-icons">
+		                		<a class="list-icons-item" data-action="collapse"></a>
+		                		<a class="list-icons-item" data-action="reload"></a>
+		                		<a class="list-icons-item" data-action="remove"></a>
+		                	</div>
+	                	</div>
+					</div>
+
+                	<div class="wizard-form steps-basic wizard " action="#" data-fouc>
+
+						<h6>Datos básicos</h6>
+						<fieldset>
+                            <hr>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Nombre proyecto:</label>
+                                        <input class="form-control" id="nombreProyecto" type="text"/>
+
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Presupuesto ($):</label>
+                                        <input class="form-control" id="nombreProyecto" type="text"/>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Fecha inicio:</label>
+                                        <input class="form-control" id="nombreProyecto" type="date"/>
+
+									</div>
+								</div>
+                                <div class="col-md-6">
+									<div class="form-group">
+										<label>Fecha fin:</label>
+                                        <input class="form-control" id="nombreProyecto" type="date"/>
+									</div>
+								</div>
+
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Cantidad horas de pruebas manuales :</label>
+                                        <input class="form-control" id="nombreProyecto" type="text"/>
+
+									</div>
+								</div>
+                                <div class="col-md-6">
+									<div class="form-group">
+										<label>Cantidad horas máquina:</label>
+                                        <input class="form-control" id="nombreProyecto" type="text"/>
+									</div>
+								</div>
+
+							</div>
+                            <hr>
+
+
+						</fieldset>
+
+						<h6>Aplicaciones Web</h6>
+						<fieldset>
+                            <hr>
+						<div class="row">
+                                <div class="col-md-12 ">
+									<div class="form-group ">
+                                        <div class="mb-2">
+
+                                            <button class="btn btn-success"  id="btnAgregarAppWeb" >
+                                                <i class="icon-add "></i>
+                                            </button>
+                                            </td>
+                                        </div>
+                                        <table class="table table-bordered col-md-12" id="tablaAppWeb">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Tipo Prueba</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="filaWeb">
+
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option> -- Seleccione la herramienta -- </option>
+                                                           <option >Dolibarr</option>
+                                                            <option >Los estudiantes </option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option> -- Seleccione el tipo de prueba -- </option>
+                                                           <option >Headless</option>
+                                                            <option >Random </option>
+                                                            <option >VRT </option>
+                                                            <option >Generación de datos </option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-danger btnEliminarAppWeb" >
+                                                            <i class="icon-trash "></i>
+                                                        </button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+									</div>
+								</div>
+                            </div>
+                            <hr>
+                            <div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<h3 class="text-center">Pasos / Escenarios :</h3>
+										<div class="form-check">
+											<label class="form-check-label">
+												<input type="checkbox" id="checkScript" name="availability" class="form-input-styled" data-fouc>
+												Ingresar script (Indica si deseas ingresar los archivos de scripts de pruebas)
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+                            <div class="pasos row" id="contenidoConfig">
+                                <div class="col-12 mt-3 align-right">
+                                    <button id="agregarFilaConfig" class=" align-right col-3 btn btn-success form-control"><i class="icon icon-add"></i> Agregar </button>
+                                </div>
+
+                                <div class="row mt-4 " id="filaConfig">
+                                    <div class="col-4">
+                                        <label> Pasos a realizar : </label>
+                                        <select class="form-control" id="app">
+                                            <option value="click"> Click </option>
+                                            <option value="contains"> Contains </option>
+                                            <option value="contains"> Find </option>
+                                            <option value="contains"> Type </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-4">
+                                        <label> Nombre elemento : </label>
+                                        <input class="form-control" id="urlApp"/>
+                                    </div>
+                                    <div class="col-4">
+                                        <label> Valor : </label>
+                                        <input class="form-control" id="urlApp"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pasos row" id="contenidoConfigArchivo" style="display: none">
+                                 <div class="col-12">
+                                     <div class="form-group">
+										<label class="d-block">Seleccione archivo:</label>
+	                                    <input type="file" name="resume" class="form-input-styled" data-fouc>
+	                                    <span class="form-text text-muted">Archivo Max file size 2Mb</span>
+                                    </div>
+                                 </div>
+                            </div>
+                            <hr>
+						</fieldset>
+
+						<h6> Aplicaciones Móviles</h6>
+						<fieldset>
+                            <hr>
+							<div class="row">
+								<div class="col-md-12 ">
+									<div class="form-group ">
+                                        <div class="mb-2">
+
+                                            <button class="btn btn-success"  id="btnAgregarAppMovil" >
+                                                <i class="icon-add "></i>
+                                            </button>
+                                            </td>
+                                        </div>
+                                        <table class="table table-bordered col-md-12" id="tablaAppMovil">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Tipo Prueba</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="filaMovil">
+
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option> -- Seleccione la herramienta -- </option>
+                                                           <option > K9-MAIL</option>
+                                                            <option >WIKIPEDIA </option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option> -- Seleccione el tipo de prueba -- </option>
+                                                           <option >Random</option>
+                                                            <option >Mutation </option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-danger btnEliminarAppMovil" >
+                                                            <i class="icon-trash "></i>
+                                                        </button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+									</div>
+								</div>
+							</div>
+
+                            <div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<h3 class="text-center">Random </h3>
+
+									</div>
+								</div>
+							</div>
+
+                            <div class="row">
+                                <div class="form-group">
+
+                            <label class="form-check-label"> Número de eventos </label>
+                            <input type="text" class="form-control">
+
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<h3 class="text-center">Mutation</h3>
+									</div>
+								</div>
+							</div>
+
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="d-block">Multithread :</label>
+	                                    <select class="form-control">
+                                            <option>Si</option>
+                                            <option>No</option>
+                                        </select>
+                                    </div>
+								</div>
+							</div>
+<hr>
+						</fieldset>
+
+						<h6>Configuración General</h6>
+						<fieldset>
+                            <hr>
+							<div class="row">
+								<div class="col-3">
+									<div class="form-group ">
+										<label> Generar video:</label>
+                                        <select class="form-control">
+                                            <option>Si</option>
+                                            <option>No</option>
+                                        </select>
+
+									</div>
+								</div>
+
+                                <div class="col-3">
+									<div class="form-group ">
+										<label > Calidad:</label>
+                                        <select class="form-control">
+                                            <option>Baja</option>
+                                            <option>Media</option>
+                                            <option>Alta</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Milisegundos para esperar la capturar de imagen :</label>
+                                        <input class="form-control" id="nombreProyecto" type="text"/>
+									</div>
+								</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Enviar correo por cada fallo:</label>
+                                        <select class="form-control">
+                                            <option>Si</option>
+                                            <option>No</option>
+                                        </select>
+
+									</div>
+								</div>
+                                <div class="col-md-6">
+									<div class="form-group">
+										<label>Ver todos los eventos por consola:</label>
+                                        <select class="form-control">
+                                            <option>Si</option>
+                                            <option>No</option>
+                                        </select>
+
+									</div>
+								</div>
+
+
+							</div>
+                            <div class="row">
+                                <div class="col-md-12">
+									<div class="form-group">
+										<h3 class="text-center">Matriz de prueba:</h3>
+									</div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+									<div class="form-group">
+
+
+
+                            <table class="table table-bordered col-md-12" id="tablaAppWeb">
+                                            <thead>
+                                                <tr>
+                                                    <th>Navegador</th>
+                                                    <th>Versión</th>
+
+                                                    <th>Eliminar</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="filaWeb">
+
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option> -- Seleccione la herramienta -- </option>
+                                                           <option >Chrome </option>
+                                                            <option >Firefox </option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option> -- Seleccione versión -- </option>
+                                                           <option >72.0</option>
+                                                            <option >71.0.3578 </option>
+                                                            <option >70.0.3538 </option>
+                                                            <option >69.0.3497</option>
+                                                        </select>
+                                                    </td>
+
+                                                    <td>
+                                                        <button class="btn btn-danger btnEliminarAppWeb" >
+                                                            <i class="icon-trash "></i>
+                                                        </button>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+						</fieldset>
+					</div>
+	            </div>
+	            <!-- /basic setup -->
+
+{% endblock %}
+

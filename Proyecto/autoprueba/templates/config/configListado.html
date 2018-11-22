@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %} VRT Testing {% endblock %}
+
+
+{% block content %}
+
+     <!-- Ace code editor -->
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title"> Visual Regresion Testing </h5>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="card-body" id="contenido">
+            <div class="row ">
+                <div class="col-12">
+                     <table class="table table-bordered col-md-12" id="tablaAppWeb">
+                                            <thead>
+                                                <tr>
+                                                    <th>Fecha</th>
+                                                    <th>Nombre</th>
+                                                    <th>Ejecutado</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="filaWeb">
+
+                                                    <td> 2018-11-01 </td>
+                                                    <td> Proyecto prueba </td>
+                                                    <td> 50% </td>
+                                                    <td>
+                                                        <button class="btn btn-primary btnEliminarAppWeb" >
+                                                            <i class="icon-pencil"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <tr class="filaWeb">
+
+                                                    <td> 2018-11-03 </td>
+                                                    <td> Proyecto maestría</td>
+                                                    <td> 85% </td>
+                                                    <td>
+                                                        <button class="btn btn-primary btnEliminarAppWeb" >
+                                                            <i class="icon-pencil"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                </div>
+
+
+            </div>
+
+
+            </div>
+    </div>
+
+    <hr>
+    <div class="row ml-5 mb-5">
+        <a href="#" class="btn bg-blue"><i class="icon-backspace mr-2"></i> Atrás</a>
+        <button class="btn bg-teal-400" id="ejecutarVrtCypress" ><i class="icon-statistics mr-2"></i> Ejecutar</button>
+
+    </div>
+
+{% endblock %}
+

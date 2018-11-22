@@ -212,6 +212,18 @@ def getRows(req):
 def vrtcypress(request):
     return render(request, 'vrt/cypress.html', {})
 
-
 def vrtresemble(request):
     return render(request, 'vrt/resemble.html', {})
+
+
+def configListado(request):
+    return render(request, 'config/configListado.html', {})
+
+def configPlataforma(request):
+    return render(request, 'config/configPlataforma.html', {})
+
+def appMoviles(request):
+    return render(request, 'config/listadoAppWeb.html', {})
+
+def appWeb(request):
+    return render(request, 'config/listadoAppMovil.html', {})
