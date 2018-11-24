@@ -4,8 +4,6 @@ django-registration
 djangorestframework
 
 channels
-asgi_redis
-asgiref~=1.1.2
 djongo
 dnspython
 pathlib
