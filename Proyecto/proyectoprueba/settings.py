@@ -90,8 +90,8 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'djongo',
-        'NAME': DATABASE_USER,
-        'HOST': DATABASE_HOST
+        'HOST': DATABASE_HOST,
+        'NAME': DATABASE_USER
     }
 }
 

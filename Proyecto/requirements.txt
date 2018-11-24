@@ -1,9 +1,9 @@
 requests
-Django==2.1.2
+Django
 django-registration
 djangorestframework
 
-channels==1.1.8
-asgi_redis==1.4.3
+channels
+asgi_redis
 djongo
 dnspython
