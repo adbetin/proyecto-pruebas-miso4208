@@ -4,6 +4,9 @@ django-registration
 djangorestframework
 
 channels
+channels_redis
+asgiref
 djongo
 dnspython
 pathlib
+Daphne

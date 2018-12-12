@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'autoprueba',
     'tester',
     'reporter',
+    'console',
 ]
 
 MIDDLEWARE = [
@@ -78,10 +79,8 @@ ALLOWED_HOSTS = ['*']
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASE_USER = os.environ.get("MONGODB_USER", 'Cluster0')
-print(DATABASE_USER)
-DATABASE_HOST = os.environ.get("MONGODB_URI", 'mongodb://admin:h6c1ieinkOenQWia@cluster0-shard-00-00-kgigw.mongodb.net:27017,cluster0-shard-00-01-kgigw.mongodb.net:27017,cluster0-shard-00-02-kgigw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true')
-print(DATABASE_HOST)
+DATABASE_USER = os.environ.get("MONGODB_USER", '')
+DATABASE_HOST = os.environ.get("MONGODB_URI", '')
 DATABASES = {
     #'default': {
     #    'ENGINE': 'django.db.backends.sqlite3',
@@ -140,12 +139,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'autoprueba/static'),
 )
 
+ASGI_APPLICATION = "proyectoprueba.routing.application"
 CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
         },
-        "ROUTING": "proyectoprueba.routing.channel_routing",
     },
 }

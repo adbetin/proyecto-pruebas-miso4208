@@ -1,15 +1,13 @@
-from channels.staticfiles import StaticFilesConsumer
-from . import consumers
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
+import console.routing
 
+application = ProtocolTypeRouter({
+    # (http->django views is added by default)
 
-channel_routing = {
-    # This makes Django serve static files from settings.STATIC_URL, similar
-    # to django.views.static.serve. This isn't ideal (not exactly production
-    # quality) but it works for a minimal example.
-    'http.request': StaticFilesConsumer(),
-
-    # Wire up websocket channels to our consumers:
-    'websocket.connect': consumers.ws_add,
-    'websocket.receive': consumers.ws_message,
-    'websocket.disconnect': consumers.ws_disconnectNew,
-}
+    'websocket': AuthMiddlewareStack(
+        URLRouter(
+            console.routing.websocket_urlpatterns
+        )
+    ),
+})

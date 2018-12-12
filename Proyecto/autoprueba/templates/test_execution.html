@@ -22,6 +22,12 @@
                 <div class="col-md-12">
                     <div class="mb-3">
                         <div id="terminal-container">
+                            <label>Nombre</label>
+                            <label><b>{{ execution}}</b></label>
+                            <br>
+                            <label>Estado</label>
+                            <label><b>{{ execution.status }}</b></label>
+                            <br>
                             <textarea id="terminal-area" rows="17" readonly class="form-control">
                                 {{ execution }} {{ execution.reportText }}
                             </textarea>

@@ -1,13 +1,13 @@
 import os
-import sys
 import subprocess as sub
 from threading import Thread
 from queue import Queue, Empty
+import channels.layers
+from asgiref.sync import async_to_sync
 
 # Create your views here.
-from channels import Group
 
-from proyectoprueba.consumers import ws_message
+# from proyectoprueba.consumers import ws_message
 from testcore.models import ApplicationTest, TestExecution, TestResult
 
 
@@ -38,7 +38,7 @@ def cypress_tester():
     # se crea la ejecucion
 
     # se obtiene el test
-    test = ApplicationTest.objects.get(testhash='a6a40b8a-d8db-4b26-8bc1-ad3ab82a5353')
+    test = ApplicationTest.objects.get(testhash='31c4fb6c-41d8-4b7b-a16e-fc531155398e')
 
     testExecution = TestExecution()
     testExecution.applicationTest = test
@@ -81,7 +81,7 @@ def mdroid_tester(application, options, multithread, workspace):
                    multithread], stdout=sub.PIPE, stderr=sub.PIPE)
 
     # se obtiene el test
-    test = ApplicationTest.objects.get(testhash='17fd5bdc-42f9-491b-bc59-60af9f6c4067')
+    test = ApplicationTest.objects.get(testhash='31c4fb6c-41d8-4b7b-a16e-fc531155398e')
 
     testExecution = TestExecution()
     testExecution.applicationTest = test
@@ -115,6 +115,14 @@ def enqueue_output(out, testExecution, queue):
         print(line)
         # ws_message(line.decode('utf-8'), str(testExecution.executionhash))
 
-        Group('terminal-' + str(testExecution.executionhash)).send({'text': line.decode('utf-8')})
-        # queue.put(line)
+        channel_layer = channels.layers.get_channel_layer()
+        terminal_name = 'terminal_%s' % testExecution.executionhash
+
+        async_to_sync(channel_layer.group_send)(
+            terminal_name,
+            {
+                'type': 'chat_message',
+                'message': str(line.decode('utf-8'))
+            }
+        )
     out.close()
