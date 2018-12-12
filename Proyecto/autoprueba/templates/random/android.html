@@ -24,9 +24,9 @@
                 <div class="col-4">
                     <label> Aplicación móvil instalada : </label>
                     <select class="form-control" id="app">
-                        <option value="org.wikipedia"> Wikipedia </option>
-                        <option value="org.k9mail"> K-9 Mail </option>
-                        <option value="com.rutasdeautobuses.transmileniositp"> Trasmilenio </option>
+                        {% for app in applications %}
+                            <option value="{{ app.id }}"> {{ app.name }} </option>
+                        {% endfor %}
                     </select>
 
                 </div>

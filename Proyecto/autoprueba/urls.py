@@ -42,8 +42,7 @@ urlpatterns = [
     path('SQLGenerator/', view.sqlGenerator, name='sqlGenerator'),
 
     # gdd-bdt?
-    path('tester_android/<numEvent>/<packageHerramienta>/', view_tester.android, name='android'),
-    path('tester_android/<numEvent>/<packageHerramienta>/', view_tester.android, name='android'),
+    path('tester_android/<numEvent>/<applicationId>/', view_tester.android, name='android'),
 
     # visual regression testing
     path('vrt/cypress', view.vrtcypress, name='vrtcypress'),
@@ -57,4 +56,3 @@ urlpatterns = [
 
     path('testcelery', view.testCelery, name='testCelery'),
 ]
-

@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from rest_framework.utils import json
 
-from testcore.models import TestExecution
+from testcore.models import TestExecution, Application
 from tester.functions import mdroid_tester, cypress_tester
 from tester.tasks import random_testing
 
@@ -80,7 +80,8 @@ def headless_webdriver(request):
 
 
 def android(request):
-    return render(request, 'random/android.html', {})
+    applications = Application.objects.filter(ready=True)
+    return render(request, 'random/android.html', {"applications": applications})
 
 
 def calabash(request):
