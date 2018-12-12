@@ -74,7 +74,7 @@ def random_testing(application_id, num_event, package):
     (out, err) = proc.communicate()
     # log.report_text += str(out)
 
-    if "Monkey aborted due to error" not in out:
+    if "Monkey aborted due to error" not in str(out):
         print("Random ejecutado con exito para aplicacion" + package)
     # test.status = MutantStatus.SUCCESS.value
     else:
