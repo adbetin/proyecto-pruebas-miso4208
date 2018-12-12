@@ -1,21 +1,20 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
 import os
 import uuid
-import threading
-
-from testcore.models import TestExecution
-from tester.functions import create_file, mdroid_tester, cypress_tester
-from rest_framework.utils import json
 
 # Create your views here.
 import requests
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from rest_framework.utils import json
 
+from testcore.models import TestExecution
+from tester.functions import mdroid_tester, cypress_tester
 from tester.tasks import random_testing
 
 
 def index(request):
     return render(request, 'index.html', {})
+
 
 def test_execution(request, execution_id):
     execution = get_object_or_404(TestExecution, executionhash=execution_id)
@@ -214,6 +213,7 @@ def getRows(req):
 def vrtcypress(request):
     return render(request, 'vrt/cypress.html', {})
 
+
 def vrtresemble(request):
     return render(request, 'vrt/resemble.html', {})
 
@@ -221,16 +221,19 @@ def vrtresemble(request):
 def configListado(request):
     return render(request, 'config/configListado.html', {})
 
+
 def configPlataforma(request):
     return render(request, 'config/configPlataforma.html', {})
 
+
 def appMoviles(request):
     return render(request, 'config/listadoAppWeb.html', {})
+
 
 def appWeb(request):
     return render(request, 'config/listadoAppMovil.html', {})
 
 
 def testCelery(request):
-    random_testing.delay("Prueba desde el front")
+    random_testing.delay(4, 5000, "com.evancharlton.mileage")
     return render(request, 'index.html', {})
