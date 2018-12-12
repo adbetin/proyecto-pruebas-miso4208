@@ -23,7 +23,7 @@ def random_testing(application_id, num_event, package):
     test = ApplicationTest.objects.create(name="Random Testing", application=application, testType=testType,
                                           library=library)
     exec = TestExecution.objects.create(applicationTest=test, report_text="",
-                                        started_at=datetime.datetime.now())
+                                        started_at=datetime.now())
 
     # se firma la aplicacion
     keystore_path = os.path.join(os.environ.get("HOME"), "ks", "proyecto.keystore")
@@ -88,7 +88,7 @@ def random_testing(application_id, num_event, package):
         test.status = TestResult.FAIL.value
         exec.status = TestResult.FAIL.value
 
-    exec.finished_at = datetime.datetime.now()
+    exec.finished_at = datetime.now()
     exec.save()
 
     test.save()
