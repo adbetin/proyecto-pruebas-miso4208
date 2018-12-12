@@ -20,6 +20,7 @@ class Application(models.Model):
     applicationType = models.ForeignKey(ApplicationType, on_delete=models.PROTECT, related_name="applications")
     created_at = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
+    ready = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
