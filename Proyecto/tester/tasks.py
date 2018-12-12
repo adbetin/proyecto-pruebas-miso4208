@@ -22,7 +22,7 @@ def random_testing(application_id, num_event, package):
     library = Library.objects.get(name="Android Monkey")
     test = ApplicationTest.objects.create(name="Random Testing", application=application, testType=testType,
                                           library=library)
-    exec = TestExecution.objects.create(applicationTest=test, report_text="",
+    exec = TestExecution.objects.create(applicationTest=test, reportText="",
                                         started_at=datetime.now())
 
     # se firma la aplicacion
