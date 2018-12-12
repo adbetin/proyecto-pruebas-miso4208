@@ -22,7 +22,7 @@ def random_testing(application_id, num_event, package):
 
     # se firma la aplicacion
     keystore_path = os.path.join(os.environ.get("HOME"), "ks", "proyecto.keystore")
-    apk_path = os.path.join(os.environ.get("HOME"), "test", "monkey", str(application_id), package + ".apk")
+    apk_path = os.path.join(os.environ.get("HOME"), "test", "apps", str(application_id), package + ".apk")
     proc = subprocess.Popen([
         "jarsigner",
         "-verbose",
