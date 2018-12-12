@@ -54,5 +54,7 @@ urlpatterns = [
     path('config/listadoConfig', view.configListado, name='configListado'),
     path('config/appMoviles', view.appMoviles, name='appMoviles'),
     path('config/appWeb', view.appWeb, name='appWeb'),
+
+    path('testcelery', view.testCelery, name='testCelery'),
 ]
 

@@ -1,9 +1,8 @@
-from djongo import models
 import uuid
 from enum import Enum
+from django.db import models
 
 
-# Create your models here.
 class ApplicationType(models.Model):
     name = models.CharField(max_length=255)  # el nombre de la tipo
     mobile = models.BooleanField(default=False)  # verifica si se ejecuta sobre moviles
@@ -24,6 +23,7 @@ class Application(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class TestResult(Enum):
     NOTRUN = "No ejecutado"
@@ -90,6 +90,7 @@ class TestExecution(models.Model):
 
     def __str__(self):
         return "%s: %s - %s" % (self.applicationTest.application.name, self.applicationTest.name, str(self.created_at))
+
 
 class TestParameter(models.Model):
     test = models.ForeignKey(TestExecution, db_index=True, on_delete=models.CASCADE, related_name="parameters")

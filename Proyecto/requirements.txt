@@ -2,11 +2,14 @@ requests
 Django
 django-registration
 djangorestframework
+psycopg2
+celery
+pycurl==7.43.0
+boto3
 
 channels
 channels_redis
 asgiref
-djongo
 dnspython
 pathlib
 Daphne

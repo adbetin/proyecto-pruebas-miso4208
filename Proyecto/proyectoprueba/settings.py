@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'channels',
+    #'channels',
     'testcore',
     'autoprueba',
     'tester',
@@ -82,18 +81,25 @@ ALLOWED_HOSTS = ['*']
 DATABASE_USER = os.environ.get("MONGODB_USER", '')
 DATABASE_HOST = os.environ.get("MONGODB_URI", '')
 DATABASES = {
-    #'default': {
+    # 'default': {
     #    'ENGINE': 'django.db.backends.sqlite3',
     #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #}
+    # }
+    # 'default': {
+    #     'ENGINE': 'djongo',
+    #     'HOST': DATABASE_HOST,
+    #     'NAME': DATABASE_USER
+    # }
 
     'default': {
-        'ENGINE': 'djongo',
-        'HOST': DATABASE_HOST,
-        'NAME': DATABASE_USER
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'proyectoprueba',
+        'USER': 'proyectoprueba',
+        'PASSWORD': '12345678',
+        'HOST': 'proyectoprueba.cwgrjdjrdmgv.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -113,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -126,7 +131,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -148,3 +152,25 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+# Celery
+AWS_ACCESS_KEY_ID = 'AKIAJQFUBKRVEORGTQDA'
+AWS_SECRET_ACCESS_KEY = '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'
+
+BROKER_URL = "sqs://%s:%s@" % (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+BROKER_TRANSPORT_OPTIONS = {
+    'region': 'us-east-1',
+    'visibility_timeout': 60,  # 1 minutes
+    'polling_interval': 5,  # 5 seconds
+    #'worker_concurrency': 1
+}
+
+# CELERY namespaced
+CELERY_BROKER_URL = BROKER_URL
+CELERY_BROKER_TRANSPORT_OPTIONS = BROKER_TRANSPORT_OPTIONS
+CELERY_TASK_DEFAULT_QUEUE = 'proyectoprueba'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_DEFAULT_QUEUE = 'proyectoprueba'
+CELERY_RESULT_BACKEND = None  # Disabling the results backend

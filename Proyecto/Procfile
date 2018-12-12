@@ -1,0 +1,2 @@
+web: gunicorn project0.wsgi
+worker: celery worker -A proyectoprueba -l info --concurrency=1

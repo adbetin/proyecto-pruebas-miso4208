@@ -11,6 +11,8 @@ from rest_framework.utils import json
 # Create your views here.
 import requests
 
+from tester.tasks import random_testing
+
 
 def index(request):
     return render(request, 'index.html', {})
@@ -227,3 +229,8 @@ def appMoviles(request):
 
 def appWeb(request):
     return render(request, 'config/listadoAppMovil.html', {})
+
+
+def testCelery(request):
+    random_testing.delay("Prueba desde el front")
+    return render(request, 'index.html', {})
