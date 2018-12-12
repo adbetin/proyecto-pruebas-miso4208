@@ -43,7 +43,7 @@ def random_testing(application_id, num_event, package):
         "123456",
     ], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
-    exec.report_text += str(out)
+    exec.reportText += str(out)
     exec.save()
 
     # se desinstala la aplicacion
@@ -53,7 +53,7 @@ def random_testing(application_id, num_event, package):
         package
     ], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
-    exec.report_text += str(out)
+    exec.reportText += str(out)
     exec.save()
 
     # se instala la aplicacion
@@ -63,7 +63,7 @@ def random_testing(application_id, num_event, package):
         apk_path
     ], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
-    exec.report_text += str(out)
+    exec.reportText += str(out)
     exec.save()
 
     # proceso que ejecuta el monkey testing
@@ -77,7 +77,7 @@ def random_testing(application_id, num_event, package):
         str(num_event)
     ], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
-    exec.report_text += str(out)
+    exec.reportText += str(out)
 
     if "Monkey aborted due to error" not in str(out):
         print("Random ejecutado con exito para aplicacion" + package)
