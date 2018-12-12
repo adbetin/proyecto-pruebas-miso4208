@@ -18,7 +18,7 @@ def random_testing(application_id, num_event, package):
     # se crea registro mutantTest y mutant log
     application = getApplicationById(application_id)
 
-    testType = TestType.objects.get(name="Android Monkey")
+    testType = TestType.objects.get(name="Monkey")
     library = Library.objects.get(name="Android Monkey")
     test = ApplicationTest.objects.create(name="Random Testing", application=application, testType=testType,
                                           library=library)
