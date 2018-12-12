@@ -87,6 +87,7 @@ class TestExecution(models.Model):
     finished_at = models.DateTimeField(default=None, blank=True, null=True)
     reportText = models.TextField(blank=True, null=True)
     executionhash = models.CharField(max_length=100, blank=True, unique=True, default=uuid.uuid4)
+    report_status = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return "%s: %s - %s" % (self.applicationTest.application.name, self.applicationTest.name, str(self.created_at))
