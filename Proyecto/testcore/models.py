@@ -21,6 +21,7 @@ class Application(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
     ready = models.BooleanField(default=False)
+    package_name = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
