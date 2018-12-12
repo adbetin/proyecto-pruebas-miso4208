@@ -2,9 +2,11 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 import subprocess
+from datetime import datetime
 
 from celery import shared_task
-from testcore.models import Application
+
+from testcore.models import Application, ApplicationTest, TestExecution, TestType, Library, TestResult
 
 
 def getApplicationById(app_id):
@@ -15,10 +17,14 @@ def getApplicationById(app_id):
 @shared_task
 def random_testing(application_id, num_event, package):
     # se crea registro mutantTest y mutant log
-    # application = getApplicationById(application_id)
-    # test = ApplicationTest.objects.create(name="Random Testing", applica=mutant, testType=MutantType.MONKEY.value)
-    # log = MutantLog.objects.create(mutantTest=test, worker_ip=get_machine_url(), report_text="",
-    #                                started_at=datetime.datetime.now())
+    application = getApplicationById(application_id)
+
+    testType = TestType.objects.get(name="Android Monkey")
+    library = Library.objects.get(name="Android Monkey")
+    test = ApplicationTest.objects.create(name="Random Testing", application=application, testType=testType,
+                                          library=library)
+    exec = TestExecution.objects.create(applicationTest=test, report_text="",
+                                        started_at=datetime.datetime.now())
 
     # se firma la aplicacion
     keystore_path = os.path.join(os.environ.get("HOME"), "ks", "proyecto.keystore")
@@ -38,8 +44,8 @@ def random_testing(application_id, num_event, package):
         "123456",
     ], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
-    # log.report_text += str(out)
-    # log.save()
+    exec.report_text += str(out)
+    exec.save()
 
     # se desinstala la aplicacion
     proc = subprocess.Popen([
@@ -48,8 +54,8 @@ def random_testing(application_id, num_event, package):
         package
     ], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
-    # log.report_text += str(out)
-    # log.save()
+    exec.report_text += str(out)
+    exec.save()
 
     # se instala la aplicacion
     proc = subprocess.Popen([
@@ -58,8 +64,8 @@ def random_testing(application_id, num_event, package):
         apk_path
     ], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
-    # log.report_text += str(out)
-    # log.save()
+    exec.report_text += str(out)
+    exec.save()
 
     # proceso que ejecuta el monkey testing
     proc = subprocess.Popen([
@@ -72,19 +78,21 @@ def random_testing(application_id, num_event, package):
         str(num_event)
     ], stdout=subprocess.PIPE)
     (out, err) = proc.communicate()
-    # log.report_text += str(out)
+    exec.report_text += str(out)
 
     if "Monkey aborted due to error" not in str(out):
         print("Random ejecutado con exito para aplicacion" + package)
-    # test.status = MutantStatus.SUCCESS.value
+        test.status = TestResult.SUCCESS.value
+        exec.status = TestResult.SUCCESS.value
     else:
         print("Random ejecutado fallido para application" + package)
-        # test.status = MutantStatus.FAIL.value
+        test.status = TestResult.FAIL.value
+        exec.status = TestResult.FAIL.value
 
-    # log.finished_at = datetime.datetime.now()
-    # log.save()
+    exec.finished_at = datetime.datetime.now()
+    exec.save()
 
-    # test.save()
+    test.save()
 
 # # Calabash
 # @shared_task
