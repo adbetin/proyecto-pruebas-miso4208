@@ -10,8 +10,7 @@ from testcore.models import Application, ApplicationTest, TestExecution, TestTyp
 
 
 def getApplicationById(app_id):
-    obj, created = Application.objects.get(id=app_id)
-    return obj
+    return Application.objects.get(id=app_id)
 
 
 @shared_task
