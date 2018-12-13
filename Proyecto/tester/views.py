@@ -9,7 +9,6 @@ from tester.tasks import random_testing
 
 def android(request, numEvent, applicationId):
     app = Application.objects.get(id=applicationId)
-
     random_testing.delay(applicationId, numEvent, app.package_name)
 
     # os.chdir('/home/rafa/Android/Sdk/platform-tools/')

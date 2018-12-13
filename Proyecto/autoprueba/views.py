@@ -81,7 +81,8 @@ def headless_webdriver(request):
 
 def android(request):
     applications = Application.objects.filter(ready=True)
-    return render(request, 'random/android.html', {"applications": applications})
+    results = TestExecution.objects.all()
+    return render(request, 'random/android.html', {"applications": applications, "executions": results})
 
 
 def calabash(request):
